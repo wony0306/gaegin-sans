@@ -1,0 +1,450 @@
+*,
+*::before,
+*::after {
+  box-shadow: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  /* line-height: 1.5rem; */
+  background-color: #ffffff;
+  color: #333;
+  font-family: "LongSans", sans-serif;
+  /* display: flex;*/
+  /* justify-content: center;*/
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+@font-face {
+  font-family: "LongSans";
+  src: url("../LongSans-variableVF.woff2") format("woff2");
+}
+
+.text {
+  font-family: "LongSans";
+  font-family: "LongSans";
+}
+
+.wrapper.flow {
+  width: 100%;
+  /* margin-inline: auto;*/
+  margin: 0 auto;
+  max-width: 1000px;
+  min-height: 100vh;
+  background: white;
+  border-radius: 12px;
+  /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); */
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  color: #919191;
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 4.25rem;
+  margin-top: 1.25rem;
+  font-family: "Helvetica", sans-serif;
+  text-align: center;
+  width: 100%;
+}
+
+.dynamic-input {
+  position: absolute;
+
+  left: 50%;
+  top: 60%;
+
+  transform: translate(-50%, -50%);
+
+  /* 기존 설정 */
+  width: 100%;
+  font-family: "LongSans", sans-serif;
+  border: none;
+  outline: none;
+  text-align: center;
+  background: transparent;
+  resize: none;
+  overflow: hidden;
+}
+
+.preview-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 37.5rem;
+  margin-bottom: 1.875rem;
+  overflow: hidden;
+  position: relative; /* 이게 있어야 아래 absolute가 기준점을 잡음 */
+}
+
+.dynamic-input::placeholder {
+  font-family: "Pretendard Variable", sans-serif;
+  color: #999;
+  font-size: 3.2rem;
+}
+
+.placeholder-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 항상 정중앙 고정 */
+  font-family: "Pretendard Variable", sans-serif;
+  font-size: 4rem; /* 이 값은 .dynamic-input 폰트 크기와 무관하게 고정됨 */
+  color: #999;
+  pointer-events: none; /* 클릭 시 textarea로 이벤트 통과 */
+  /* white-space: nowrap; */
+}
+
+.dynamic-input {
+  font-family: "LongSans", sans-serif;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: center;
+  background: transparent;
+  resize: none;
+  overflow: hidden;
+  font-size: clamp(3rem, 30vw, 12rem);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  padding: 10px 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  /* [수정] FontGoggles 기본 설정값과 매칭 (Height: 100, Middle: 50) */
+  font-variation-settings:
+    "HGHT" 0,
+    "MDLE" 50;
+
+  /* [선택] 실시간 슬라이더 조작 시 반응 속도를 위해 transition은 제거하거나 최소화하는 것이 좋습니다. */
+  transition: none;
+}
+
+.control-panel {
+  width: 100%;
+  /*max-width: 600px; */
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: auto;
+  padding: 20px 0;
+}
+
+.control-title {
+  text-align: center;
+  font-weight: 800;
+  font-size: 24px;
+  color: #444;
+  margin-bottom: 5px;
+  font-family: "Helvetica", sans-serif;
+}
+
+.slider-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.slider-label {
+  width: 80px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #555;
+  font-family: "Helvetica", sans-serif;
+}
+
+.slider-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+input[type="range"] {
+  width: 100%;
+  height: 7px;
+  background: #ddd;
+  border-radius: 3px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #000;
+  cursor: pointer;
+}
+
+.slider-value {
+  width: 40px;
+  text-align: right;
+  font-size: 14px;
+  color: #666;
+  font-family: "Helvetica", sans-serif;
+}
+
+@media (max-width: 768px) {
+  .wrapper.flow {
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-bottom: 3rem;
+  }
+
+  .preview-area {
+    height: clamp(300px, 55vh, 700px);
+  }
+
+  .placeholder-text,
+  .dynamic-input::placeholder {
+    font-size: 2.3rem;
+  }
+
+  .slider-group {
+    /* flex-direction: column; */
+    align-items: stretch;
+    padding: 0 10px;
+  }
+}
+
+.menu-btn {
+  position: fixed;
+
+  top: 30px;
+  left: 30px;
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+  background: none;
+
+  cursor: pointer;
+
+  z-index: 999;
+
+  padding: 0;
+}
+
+.menu-btn img {
+  width: 100%;
+  display: block;
+}
+
+.side-menu {
+  position: fixed;
+
+  top: 90px;
+  left: 30px;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(10px);
+
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+
+  z-index: 998;
+}
+
+.side-menu.open {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0);
+}
+.side-menu ul {
+  list-style: none;
+}
+
+.side-menu li {
+  margin-bottom: 18px;
+}
+
+.side-menu a {
+  font-family: "Pretendard Variable", sans-serif;
+
+  font-size: 38px;
+
+  font-weight: 650;
+
+  color: #b3b3b3;
+
+  text-decoration: none;
+
+  transition: color 0.25s;
+}
+
+.side-menu a:hover {
+  color: #000;
+}
+
+.idle-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+
+  /* 초기 상태: 숨김 */
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease;
+}
+
+/* 활성화 상태 */
+.idle-screen.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.idle-content {
+  text-align: center;
+  font-family: "Pretendard Variable", sans-serif;
+}
+
+.idle-content p {
+  font-size: 2.5rem;
+  font-weight: 450;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.idle-content span {
+  font-size: 1.5rem;
+  color: #777;
+}
+
+.idle-content p {
+  font-family: "LongSans", sans-serif; /* 위에서 정의한 이름 넣기 */
+  font-size: 24rem; /* 원하시는 크기로 조절 가능 */
+  font-weight: 450;
+  color: #333;
+  margin-bottom: 10px;
+
+  transition: font-variation-settings 0.5s ease-in-out;
+}
+
+@keyframes fontWiggle {
+  0% {
+    font-variation-settings:
+      "HGHT" 10,
+      "MDLE" 20;
+  }
+  25% {
+    font-variation-settings:
+      "HGHT" 100,
+      "MDLE" 85;
+  }
+  50% {
+    font-variation-settings:
+      "HGHT" 40,
+      "MDLE" 1;
+  }
+  75% {
+    font-variation-settings:
+      "HGHT" 80,
+      "MDLE" 60;
+  }
+  100% {
+    font-variation-settings:
+      "HGHT" 1,
+      "MDLE" 100;
+  }
+}
+
+/* 글자들을 가로로 나열 */
+.wiggle-text span {
+  display: inline-block;
+  font-family: "LongSans", sans-serif;
+  font-size: 22rem;
+  font-weight: 200;
+  color: #333;
+  /* 애니메이션 지속 시간을 글자마다 조금씩 다르게 주면 훨씬 자연스럽습니다 */
+  animation: fontWiggle 6s ease-in-out infinite alternate;
+}
+
+/* 글자마다 재생 시간(duration)과 딜레이(delay)를 다르게 줘서 완벽하게 따로 놀게 만들기 */
+.wiggle-text span:nth-child(1) {
+  animation-duration: 3.2s;
+  animation-delay: 0s;
+}
+.wiggle-text span:nth-child(2) {
+  animation-duration: 4.5s;
+  animation-delay: 0.5s;
+}
+.wiggle-text span:nth-child(3) {
+  animation-duration: 2.8s;
+  animation-delay: 0.2s;
+}
+.wiggle-text span:nth-child(4) {
+  animation-duration: 3.9s;
+  animation-delay: 0.9s;
+}
+.wiggle-text span:nth-child(5) {
+  animation-duration: 4.1s;
+  animation-delay: 0.3s;
+}
+.wiggle-text span:nth-child(6) {
+  animation-duration: 3.5s;
+  animation-delay: 0.7s;
+}
+.wiggle-text span:nth-child(7) {
+  animation-duration: 4.8s;
+  animation-delay: 0.1s;
+}
+.wiggle-text span:nth-child(8) {
+  animation-duration: 3s;
+  animation-delay: 0.6s;
+}
+.wiggle-text span:nth-child(9) {
+  animation-duration: 3.7s;
+  animation-delay: 0.4s;
+}
+
+.idle-content {
+  text-align: center;
+  font-family: "Pretendard Variable", sans-serif;
+}
+
+.idle-content span:not(.wiggle-text span) {
+  font-size: 1.5rem;
+  color: #777;
+}
+
+@media (max-width: 48rem) {
+  /* 잠자는 화면 전체 여백 및 정렬 조정 */
+  .idle-content {
+    padding: 0 0px;
+  }
+
+  /* 글자 크기를 모바일에 맞게 축소 (너무 크면 잘리니까 줄여줍니다) */
+  .wiggle-text span {
+    font-size: 8rem; /* 4rem에서 모바일에 맞게 줄임 */
+  }
+
+  /* 안내 문구 크기 조정 */
+  .idle-content span:not(.wiggle-text span) {
+    font-size: 1rem;
+  }
+}
