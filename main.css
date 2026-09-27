@@ -21,7 +21,7 @@ body {
 
 @font-face {
   font-family: "LongSans";
-  src: url("../LongSans-variableVF.woff2") format("woff2");
+  src: url("./LongSans-variableVF.woff2") format("woff2");
 }
 
 .text {
