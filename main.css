@@ -21,7 +21,7 @@ body {
 
 @font-face {
   font-family: "LongSans";
-  src: url("./LongSans-variableVF.woff2") format("woff2");
+  src: url("LongSans-variableVF.woff2") format("woff2");
 }
 
 .text {
@@ -129,13 +129,25 @@ body {
 }
 
 .control-panel {
+  /* 1. 화면 하단에 고정 */
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%); /* 화면 가로 중앙 정렬 */
+
+  /* 2. 크기 및 너비 설정 */
   width: 100%;
-  /*max-width: 600px; */
+  max-width: 600px; /* 원하시는 최대 너비값 (필요 시 조절) */
+
+  /* 3. 기본 스타일 및 여백 */
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #ffffff; /* 뒤의 글자가 비치지 않게 배경색 지정 */
+  z-index: 100; /* 다른 요소보다 위에 오도록 설정 */
+
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  margin-top: auto;
-  padding: 20px 0;
+  gap: 20px;
 }
 
 .control-title {
