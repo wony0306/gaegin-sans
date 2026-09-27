@@ -48,6 +48,7 @@ body {
   color: #919191;
   font-size: 36px;
   font-weight: 800;
+  margin-bottom: 3.75rem;
   margin-top: 1.25rem;
   font-family: "Helvetica", sans-serif;
   text-align: center;
@@ -88,7 +89,7 @@ body {
   font-family: "Pretendard Variable", sans-serif;
   color: #999;
   font-size: 3.2rem;
-  padding-top: 50px;    /* 텍스트를 아래로 내리고 싶을 때 */
+  padding-top: 30px;    /* 텍스트를 아래로 내리고 싶을 때 */
   padding-left: 15px;   /* 텍스트를 오른쪽으로 밀고 싶을 때 */
 }
 
