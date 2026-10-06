@@ -180,7 +180,7 @@ input[type="range"] {
   border-radius: 3px;
   outline: none;
 
-  accent-color: #000000;
+  accent-color: #000;
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -191,8 +191,14 @@ input[type="range"]::-webkit-slider-thumb {
   height: 18px;
   border-radius: 50%;
 
-  background: #000000;
+  background: #000;
   cursor: pointer;
+}
+
+input[type="range"]::-moz-range-progress {
+  background-color: #000; /* 파이어폭스 왼쪽 채움 색상 */
+  height: 7px;
+  border-radius: 3px;
 }
 
 .slider-value {
