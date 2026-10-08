@@ -178,9 +178,14 @@ body {
 }
 
 .slider-wrapper {
-  flex: 1;
+  width: 7px;
+  height: 670px;
+
+  flex: none;
+
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 input[type="range"] {
