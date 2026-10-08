@@ -137,13 +137,11 @@ body {
 
   width: 180px;
 
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 670px auto;
+  display: flex; 
+  justify-content: space-between;
+  align-items: flex-start;
 
-  justify-items: center;
-
-  gap: 0;
+  gap: 20px;
   margin: 0;
   padding: 0;
 
@@ -151,34 +149,43 @@ body {
 }
 
 .control-title {
-  grid-column: 1 / 3;
-  grid-row: 2;
+  position: absolute;
+
+  top: 705px;
+  left: 50%;
+
+  transform: translateX(-50%);
 
   text-align: center;
-  font-weight: 800;
 
+  font-weight: 800;
+  
   font-size: 24px;
+
   color: #222;
 
-  margin-top: 35px;
-  margin-bottom: 0;
+  margin: 0;
 
   font-family: "Helvetica", sans-serif;
+
+  white-space: nowrap;
 }
 
 .slider-group {
   width: 70px;
-  height: 670px;
+  height: 720px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
   gap: 0;
+
+  position: relative;
 }
 
 .slider-label {
-  order: 3;
+
   width: auto;
 
   margin-top: 15px;
@@ -196,18 +203,23 @@ body {
 
 .slider-wrapper {
   width: 7px;
-  height: 670px;
+  height: 720px;
 
   flex: none;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  overflow: visible;
 }
 
 input[type="range"] {
   width: 670px;
   height: 7px;
+
+  flex: none;
+  flex-shrink: 0;
 
   background: #ddd;
   border-radius: 3px;
@@ -237,10 +249,20 @@ input[type="range"]::-moz-range-progress {
 }
 
 .slider-value {
-  width: 40px;
-  text-align: right;
+  position: absolute;
+
+  top: -25px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: auto;
+
+  text-align: center;
+
   font-size: 14px;
   color: #666;
+
   font-family: "Helvetica", sans-serif;
 }
 
