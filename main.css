@@ -131,13 +131,27 @@ body {
 }
 
 .control-panel {
-  width: 100%;
-  /*max-width: 600px; */
+   position: fixed;
+
+  top: 130px;
+
+  right: 30px;
+
+  width: 180px;
+
   display: flex;
+
   flex-direction: column;
-  gap: 25px;
-  margin-top: auto;
-  padding: 20px 0;
+
+  align-items: center;
+
+  gap: 0;
+
+  margin: 0;
+
+  padding: 0;
+
+  z-index: 100;
 }
 
 .control-title {
