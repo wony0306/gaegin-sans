@@ -170,11 +170,20 @@ body {
 }
 
 .slider-label {
-  width: 80px;
-  font-size: 16px;
+  order: 3;
+  width: auto;
+
+  margin-top: 15px;
+
+  font-size: 12px;
   font-weight: 700;
+
   color: #555;
+
   font-family: "Helvetica", sans-serif;
+
+  white-space: nowrap;
+  text-align: center;
 }
 
 .slider-wrapper {
@@ -189,9 +198,7 @@ body {
 }
 
 input[type="range"] {
-
-
-  width: 100%;
+  width: 670px;
   height: 7px;
 
   background: #ddd;
@@ -199,6 +206,8 @@ input[type="range"] {
   outline: none;
 
   accent-color: #000;
+
+  transform: rotate(-90deg);
 }
 
 input[type="range"]::-webkit-slider-thumb {
