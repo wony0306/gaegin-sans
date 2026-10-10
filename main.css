@@ -205,17 +205,21 @@ input[type="range"]::-moz-range-progress {
 
 /* 최하단 Variable 텍스트 위치 정밀 고정 */
 .control-title {
-  position: absolute;
-  bottom: -45px;
-  left: 50%;
-  transform: translateX(-50%);
-
+  position: fixed; /* 화면 우측 하단에 고정 */
+  right: 40px;     /* .control-panel의 right 값(40px)과 동일하게 맞춤 */
+  bottom: 80px;    /* 화면 맨 아래에서부터의 거리 (슬라이더 바로 밑) */
+  
+  width: 180px;    /* 슬라이더 패널 너비와 동일하게 설정하여 중앙 정렬 */
   text-align: center;
+  
   font-weight: 800;
   font-size: 22px;
   color: #000;
   font-family: "Helvetica", sans-serif;
   white-space: nowrap;
+  
+  margin: 0;
+  z-index: 100;
 }
 
 /* =========================================================
