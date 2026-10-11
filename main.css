@@ -41,20 +41,23 @@ body {
 .wrapper.flow {
   width: calc(100% - 260px) !important;
   max-width: none;
-  min-height: 100vh;
+  
+  /* 💥 [핵심] min-height: 100vh 를 삭제하고 auto로 변경! */
+  min-height: auto !important; 
+  height: auto !important;
+
   background: white;
   border-radius: 0;
-
-  /* 위 / 좌우 / 아래 패딩 (맨 끝 10px 숫자로 아래쪽 안쪽 여백 조절 가능) */
-  padding: 25px 30px 0px; /* 👈 맨 끝 10px을 0px로 지정하면 하단 여백이 최소화됩니다 */
+  padding: 25px 30px 0px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
   margin: 0 !important;
   flex-shrink: 1;
 }
+
 
 .title {
   color: #919191;
