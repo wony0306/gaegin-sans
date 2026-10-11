@@ -50,30 +50,28 @@
         ></textarea>
       </div>
 
-      <div class="control-panel">
-        <div class="control-title">Variable</div>
-
-        <div class="slider-group">
-          <div class="slider-label">Height</div>
-          <div class="slider-wrapper">
-            <!-- ID를 자바스크립트와 일치하도록 수정 -->
-            <input type="range" id="heightSlider" min="0" max="100" value="0" />
-          </div>
-          <div class="slider-value" id="heightVal">0</div>
+    <div class="control-panel">
+      <!-- 1. Height 슬라이더 기둥 -->
+      <div class="slider-group">
+        <div class="slider-value" id="heightVal">0</div>
+        <div class="slider-wrapper">
+          <input type="range" id="heightSlider" min="0" max="100" value="0" />
         </div>
+        <div class="slider-label">Height</div>
+      </div>
 
-        <div class="slider-group">
-          <div class="slider-label">Middle</div>
-          <div class="slider-wrapper">
-            <!-- ID를 자바스크립트와 일치하도록 수정 -->
-            <input
-              type="range"
-              id="middleSlider"
-              min="0"
-              max="100"
-              value="50"
-            />
-          </div>
+      <!-- 2. Middle 슬라이더 기둥 -->
+      <div class="slider-group">
+        <div class="slider-value" id="middleVal">50</div>
+        <div class="slider-wrapper">
+          <input type="range" id="middleSlider" min="0" max="100" value="50" />
+        </div>
+        <div class="slider-label">Middle</div>
+      </div>
+
+      <!-- 3. 최하단 타이틀 (맨 아래로 배치) -->
+      <div class="control-title">Variable</div>
+    </div>
           <div class="slider-value" id="middleVal">50</div>
         </div>
       </div>
