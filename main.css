@@ -39,16 +39,17 @@ body {
 
 /* 왼쪽 메인 입력 영역 (Flex 비율에 맞춰 영역 점유) */
 .wrapper.flow {
-  flex: 1;
+  /* width: 100%; 👈 이놈이 범인입니다. 지우거나 100%를 아래처럼 제한하세요 */
+  width: calc(100% - 240px) !important; 
   max-width: 900px;
-  min-height: auto; /* 100vh 제거하여 보라색 마진 영역 축소 */
+  min-height: auto;
   background: white;
   border-radius: 12px;
   padding: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0; /* 기존 margin: 0 auto; 제거 */
+  margin: 0;
 }
 
 .title {
@@ -123,10 +124,11 @@ body {
 
 
 .control-panel {
-  position: static !important; /* fixed를 완전히 제거하여 body 흐름에 종속 */
+  position: static !important;
   transform: none !important;
-  width: 180px;
-  flex-shrink: 0;
+
+  width: 180px !important;
+  flex-shrink: 0 !important; /* 메인 박스가 아무리 커져도 자기 폭(180px) 유지 */
 
   display: flex;
   flex-wrap: wrap;
@@ -135,8 +137,8 @@ body {
 
   gap: 15px 0;
   padding: 0;
+
   
-  z-index: 100;
 }
 
 /* 개별 슬라이더 기둥 (요청하신 수치 유지) */
