@@ -18,14 +18,14 @@ body {
 
   min-height: 100vh;
 
-  
+
   display: flex !important;
   flex-direction: row !important;
-  justify-content: center;
-  align-items: center; /* 두 영역을 세로 중앙 정렬 */
+  align-items: center !important;
+  justify-content: center !important;
 
-  gap: 40px; /* 메인 박스와 슬라이더 사이 간격 */
-  padding: 40px;
+  padding: 0 60px;
+  box-sizing: border-box;
 }
 
 @font-face {
@@ -39,17 +39,18 @@ body {
 
 /* 왼쪽 메인 입력 영역 (Flex 비율에 맞춰 영역 점유) */
 .wrapper.flow {
-  flex: 1; /* 오른쪽 패널을 제외한 남은 공간만 차지 */
+  width: 100%;
   max-width: 900px;
-  min-height: auto; /* 👈 기존의 100vh를 auto로 변경 (가장 중요!) */
-  
+  min-height: auto;
   background: white;
   border-radius: 12px;
   padding: 40px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0;
+
+  margin: 0 auto; /* 중앙 배치 유지 */
 }
 
 .title {
@@ -235,19 +236,22 @@ input[type="range"]::-moz-range-progress {
 
 /* 맨 아래 타이틀 (요청하신 수치 유지) */
 .control-title {
-  position: static;
-  transform: none;
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  transform: none !important;
 
-  width: 100%;
-  text-align: center;
+  width: 180px !important;
+  flex-shrink: 0 !important;
+  margin-left: auto; /* 핵심: 메인 박스의 패딩/마진 흐름 안에서 오른쪽 끝으로 자연스럽게 밀어냄 */
 
-  font-weight: 800;
-  font-size: 24px;
-  color: #444;
-  font-family: "Helvetica", sans-serif;
-  white-space: nowrap;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
 
-  margin-top: 20px;
+  gap: 15px 0;
+  padding: 0;
 }
 
 /* =========================================================
