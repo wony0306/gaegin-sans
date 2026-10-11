@@ -44,7 +44,7 @@ body {
   min-height: 100vh;
   background: white;
   border-radius: 0;
-  padding: 25px 30px 30px;
+  padding: 30px 30px 30px;
 
   display: flex;
   flex-direction: column;
