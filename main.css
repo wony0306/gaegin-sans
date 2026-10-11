@@ -125,7 +125,7 @@ body {
    ========================================================= */
 .control-panel {
   position: fixed !important;
-  top: 20% !important;
+  top: 15% !important; /* 위로 살짝 올려 하단 여백 공간 확보 */
   right: 5.5% !important;
   left: auto !important;
   bottom: auto !important;
@@ -149,7 +149,7 @@ body {
 /* 개별 슬라이더 기둥 (700px 유지) */
 .slider-group {
   width: 70px;
-  height: 600px;
+  height: 740px; /* 전체 기둥 세로 공간 확장 */
 
   display: flex;
   flex-direction: column;
@@ -173,7 +173,7 @@ body {
 /* 슬라이더 바 영역 */
 .slider-wrapper {
   width: 20px;
-  height: 540px;
+  height: 680px; /* 👈 540px에서 680px로 시원하게 연장 */
 
   position: relative;
   display: flex;
@@ -188,7 +188,7 @@ input[type="range"] {
   top: 50%;
   left: 50%;
 
-  width: 540px;
+  width: 680px; /* 👈 slider-wrapper height와 동일한 680px 지정 */
   height: 7px;
 
   background: #ddd;
@@ -243,7 +243,7 @@ input[type="range"]::-moz-range-progress {
   text-align: center;
 
   font-weight: 800;
-  font-size: 22px;
+  font-size: 24px;
   color: #444;
   font-family: "Helvetica", sans-serif;
   white-space: nowrap;
