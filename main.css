@@ -155,7 +155,7 @@ body {
 /* 슬라이더 영역 */
 .slider-wrapper {
   width: 20px;
-  height: 480px; /* 실제 세로 바 길이 */
+  height: 600px; /* 실제 세로 바 길이 */
 
   position: relative;
   display: flex;
