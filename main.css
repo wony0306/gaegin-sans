@@ -18,14 +18,14 @@ body {
 
   min-height: 100vh;
 
-  /* 두 요소(.wrapper.flow와 .control-panel)를 수평 나란히 배치 */
+  
   display: flex !important;
   flex-direction: row !important;
   justify-content: center;
-  align-items: center; /* 세로 중앙 정렬 */
+  align-items: center; /* 두 영역을 세로 중앙 정렬 */
 
-  gap: 40px; /* 메인 박스와 오른쪽 패널 사이 간격 */
-  padding: 0 40px;
+  gap: 40px; /* 메인 박스와 슬라이더 사이 간격 */
+  padding: 40px;
 }
 
 @font-face {
@@ -39,10 +39,10 @@ body {
 
 /* 왼쪽 메인 입력 영역 (Flex 비율에 맞춰 영역 점유) */
 .wrapper.flow {
-  /* width: 100%; 👈 이놈이 범인입니다. 지우거나 100%를 아래처럼 제한하세요 */
-  width: calc(100% - 240px) !important; 
+  flex: 1; /* 오른쪽 패널을 제외한 남은 공간만 차지 */
   max-width: 900px;
-  min-height: auto;
+  min-height: auto; /* 👈 기존의 100vh를 auto로 변경 (가장 중요!) */
+  
   background: white;
   border-radius: 12px;
   padding: 40px;
