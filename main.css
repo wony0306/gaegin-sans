@@ -16,15 +16,12 @@ body {
   color: #333;
   font-family: "LongSans", sans-serif;
   min-height: 100vh;
+  width: 100%;
 
-  /* 좌우 수평 나란히 배치 */
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  justify-content: center !important;
+  display: block;
+  position: relative;
 
-  gap: 40px; /* 메인 박스와 우측 패널 사이 간격 */
-  padding: 0 40px;
+  padding: 0;
   box-sizing: border-box;
   overflow-x: hidden;
 }
@@ -42,19 +39,18 @@ body {
    2. 메인 입력 영역 (오른쪽 패널 자리를 위해 너비 양보)
    ========================================================= */
 .wrapper.flow {
-  /* 오른쪽 180px 슬라이더와 gap 40px을 뺀 나머지 공간만 차지하도록 고정 */
-  width: calc(100% - 240px) !important;
-  max-width: 900px;
-  min-height: auto;
+  width: calc(100% - 260px) !important;
+  max-width: none;
+  min-height: 100vh;
   background: white;
-  border-radius: 12px;
-  padding: 40px;
+  border-radius: 0;
+  padding: 25px 30px 30px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  margin: 0 !important; /* margin: 0 auto 해제하여 왼쪽/중앙 자리를 유지 */
+  margin: 0 !important;
   flex-shrink: 1;
 }
 
@@ -62,8 +58,8 @@ body {
   color: #919191;
   font-size: 36px;
   font-weight: 800;
-  margin-bottom: 3.75rem;
-  margin-top: 1.25rem;
+  margin-bottom: 0;
+  margin-top: 25px;
   font-family: "Helvetica", sans-serif;
   text-align: center;
   width: 100%;
@@ -74,16 +70,17 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 37.5rem;
-  margin-bottom: 1.875rem;
+  height: calc(100vh - 180px);
+  min-height: 500px;
+  margin-bottom: 0;
   overflow: hidden;
   position: relative;
 }
 
 .dynamic-input {
-  position: absolute;
+
   left: 50%;
-  top: 60%;
+  top: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
   font-family: "LongSans", sans-serif;
@@ -93,12 +90,11 @@ body {
   background: transparent;
   resize: none;
   overflow: hidden;
-  font-size: clamp(3rem, 30vw, 12rem);
+  font-size: clamp(3rem, 8vw, 12rem);
   line-height: 1.4;
   letter-spacing: -0.01em;
   padding: 10px 0;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 0;
   font-variation-settings:
     "HGHT" 0,
     "MDLE" 50;
@@ -128,18 +124,24 @@ body {
    3. 수직 슬라이더 패널 (오른쪽에 붙도록 너비 고정)
    ========================================================= */
 .control-panel {
-  position: static !important;
+  position: fixed !important;
+  top: 20% !important;
+  right: 5.5% !important;
+  left: auto !important;
+  bottom: auto !important;
   transform: none !important;
 
-  width: 180px !important;
-  flex-shrink: 0 !important; /* 절대로 줄어들거나 아래로 밀리지 않게 고정 */
+  width: 150px !important;
+  height: auto !important;
+  flex-shrink: 0 !important;
 
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: start;
 
-  gap: 15px 0;
+  column-gap: 10px;
+  row-gap: 0;
   padding: 0;
   margin: 0;
 }
@@ -147,7 +149,7 @@ body {
 /* 개별 슬라이더 기둥 (700px 유지) */
 .slider-group {
   width: 70px;
-  height: 700px;
+  height: 600px;
 
   display: flex;
   flex-direction: column;
@@ -171,12 +173,13 @@ body {
 /* 슬라이더 바 영역 */
 .slider-wrapper {
   width: 20px;
-  height: 600px;
+  height: 540px;
 
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 /* 슬라이더 레인지 트랙 */
@@ -185,17 +188,17 @@ input[type="range"] {
   top: 50%;
   left: 50%;
 
-  width: 600px;
+  width: 540px;
   height: 7px;
 
   background: #ddd;
   border-radius: 3px;
   outline: none;
-
   accent-color: #000;
 
   transform: translate(-50%, -50%) rotate(-90deg);
   margin: 0;
+  padding: 0;
 }
 
 /* 손잡이 (18px) */
@@ -235,11 +238,12 @@ input[type="range"]::-moz-range-progress {
   position: static !important;
   transform: none !important;
 
+  grid-column: 1 / -1;
   width: 100% !important;
   text-align: center;
 
   font-weight: 800;
-  font-size: 24px;
+  font-size: 22px;
   color: #444;
   font-family: "Helvetica", sans-serif;
   white-space: nowrap;
