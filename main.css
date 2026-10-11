@@ -44,7 +44,7 @@ body {
   min-height: 100vh;
   background: white;
   border-radius: 0;
-  padding: 30px 30px 30px;
+  padding: 40px 30px 30px;
 
   display: flex;
   flex-direction: column;
@@ -248,7 +248,7 @@ input[type="range"]::-moz-range-progress {
   font-family: "Helvetica", sans-serif;
   white-space: nowrap;
 
-  margin-top: 50px;
+  margin-top: 65px;
 }
 
 /* =========================================================
