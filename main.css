@@ -63,7 +63,7 @@ body {
 .dynamic-input {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 60%;
   transform: translate(-50%, -50%);
   width: 100%;
   font-family: "LongSans", sans-serif;
@@ -77,6 +77,8 @@ body {
   line-height: 1.4;
   letter-spacing: -0.01em;
   padding: 10px 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
   font-variation-settings:
     "HGHT" 0,
     "MDLE" 50;
@@ -87,6 +89,8 @@ body {
   font-family: "Pretendard Variable", sans-serif;
   color: #999;
   font-size: 3.2rem;
+  padding-top: 50px;
+  padding-left: 15px;
 }
 
 .placeholder-text {
@@ -101,18 +105,19 @@ body {
 }
 
 /* =========================================================
-   [완벽 수정] 2번 사진 레이아웃 맞춤 슬라이더 패널
+   [수정됨] 수직 슬라이더 컨트롤 패널 (원본 두께 & 스타일 반영)
    ========================================================= */
 
+/* 화면 우측 고정 패널 */
 .control-panel {
   position: fixed;
   top: 50%;
-  right: 40px;
+  right: 50px;
   transform: translateY(-50%);
 
-  width: 180px;
+  width: 160px;
   display: flex;
-  flex-wrap: wrap; /* 내부 요소 자동 줄바꿈 설정 */
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
 
@@ -122,9 +127,10 @@ body {
   z-index: 100;
 }
 
+/* 개별 슬라이더 기둥 (원본 비율 고려 세로 높이) */
 .slider-group {
-  width: 70px;
-  height: 650px;
+  width: 60px;
+  height: 520px;
 
   display: flex;
   flex-direction: column;
@@ -134,29 +140,31 @@ body {
   position: relative;
 }
 
+/* 상단 숫자 (원본 수치: font-size: 14px, color: #666) */
 .slider-value {
-
-  font-size: 13px;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
   color: #666;
   font-family: "Helvetica", sans-serif;
-  text-align: center;
 }
 
+/* 슬라이더 영역 */
 .slider-wrapper {
-  width: 7px;
-  height: 580px;
+  width: 18px; /* 손잡이 두께 18px과 맞춤 */
+  height: 440px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-
   position: relative;
 }
 
+/* 슬라이더 트랙 (원본 수치: height: 7px, background: #ddd, border-radius: 3px) */
 input[type="range"] {
-  width: 580px;
-  height: 3px;
+  width: 440px;
+  height: 7px;
 
   background: #ddd;
   border-radius: 3px;
@@ -168,46 +176,48 @@ input[type="range"] {
   transform-origin: center center;
 }
 
+/* 원본 손잡이 (width: 18px, height: 18px) */
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
 
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
 
   background: #000;
   cursor: pointer;
 }
 
+/* 파이어폭스 왼/아래 채움 색상 (원본 수치 반영) */
 input[type="range"]::-moz-range-progress {
   background-color: #000;
-  height: 3px;
+  height: 7px;
   border-radius: 3px;
 }
 
+/* 하단 라벨 (원본 수치: font-size: 16px, font-weight: 700, color: #555) */
 .slider-label {
-
-  font-size: 12px;
-
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
   font-weight: 700;
   color: #555;
   font-family: "Helvetica", sans-serif;
   white-space: nowrap;
-  text-align: center;
 }
 
-/* 맨 아래에 들어가는 Variable 타이틀 */
+/* 맨 아래 타이틀 (원본 수치: font-size: 24px, font-weight: 800, color: #444) */
 .control-title {
-  position: static; /* fixed 해제 */
+  position: static;
   transform: none;
 
-  width: 100%; /* 너비 100%를 잡아 슬라이더 아래로 떨어뜨림 */
+  width: 100%;
   text-align: center;
 
   font-weight: 800;
-  font-size: 22px;
-  color: #000;
+  font-size: 24px;
+  color: #444;
   font-family: "Helvetica", sans-serif;
   white-space: nowrap;
 
@@ -215,8 +225,32 @@ input[type="range"]::-moz-range-progress {
 }
 
 /* =========================================================
-   사이드 메뉴 및 반응형/유휴 화면
+   사이드 메뉴 및 반응형/유휴 화면 (기존 원본 유지)
    ========================================================= */
+
+@media (max-width: 768px) {
+  .wrapper.flow {
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-bottom: 3rem;
+  }
+
+  .preview-area {
+    height: clamp(300px, 55vh, 700px);
+  }
+
+  .placeholder-text,
+  .dynamic-input::placeholder {
+    font-size: 2.3rem;
+  }
+
+  .control-panel {
+    right: 15px;
+  }
+}
 
 .menu-btn {
   position: fixed;
@@ -243,7 +277,9 @@ input[type="range"]::-moz-range-progress {
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
-  transition: opacity 0.3s, transform 0.3s;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
   z-index: 998;
 }
 
@@ -287,7 +323,9 @@ input[type="range"]::-moz-range-progress {
   z-index: 9999;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease;
 }
 
 .idle-screen.active {
@@ -315,11 +353,31 @@ input[type="range"]::-moz-range-progress {
 }
 
 @keyframes fontWiggle {
-  0% { font-variation-settings: "HGHT" 10, "MDLE" 20; }
-  25% { font-variation-settings: "HGHT" 100, "MDLE" 85; }
-  50% { font-variation-settings: "HGHT" 40, "MDLE" 1; }
-  75% { font-variation-settings: "HGHT" 80, "MDLE" 60; }
-  100% { font-variation-settings: "HGHT" 1, "MDLE" 100; }
+  0% {
+    font-variation-settings:
+      "HGHT" 10,
+      "MDLE" 20;
+  }
+  25% {
+    font-variation-settings:
+      "HGHT" 100,
+      "MDLE" 85;
+  }
+  50% {
+    font-variation-settings:
+      "HGHT" 40,
+      "MDLE" 1;
+  }
+  75% {
+    font-variation-settings:
+      "HGHT" 80,
+      "MDLE" 60;
+  }
+  100% {
+    font-variation-settings:
+      "HGHT" 1,
+      "MDLE" 100;
+  }
 }
 
 .wiggle-text span {
@@ -341,15 +399,18 @@ input[type="range"]::-moz-range-progress {
 .wiggle-text span:nth-child(8) { animation-duration: 3s; animation-delay: 0.6s; }
 .wiggle-text span:nth-child(9) { animation-duration: 3.7s; animation-delay: 0.4s; }
 
-@media (max-width: 768px) {
-  .wrapper.flow { padding: 20px; }
-  .title { font-size: 24px; margin-bottom: 3rem; }
-  .preview-area { height: clamp(300px, 55vh, 700px); }
-  .placeholder-text, .dynamic-input::placeholder { font-size: 2.3rem; }
-}
+
 
 @media (max-width: 48rem) {
-  .idle-content { padding: 0 0px; }
-  .wiggle-text span { font-size: 8rem; }
-  .idle-content span:not(.wiggle-text span) { font-size: 1rem; }
+  .idle-content {
+    padding: 0 0px;
+  }
+
+  .wiggle-text span {
+    font-size: 8rem;
+  }
+
+  .idle-content span:not(.wiggle-text span) {
+    font-size: 1rem;
+  }
 }
