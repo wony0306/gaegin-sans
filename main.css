@@ -7,21 +7,13 @@
   padding: 0;
 }
 
-/* =========================================================
-   [빨간 영역] 화면 전체 및 메인 wrapper 중앙 정렬
-   ========================================================= */
 body {
   margin: 0;
   background-color: #ffffff;
   color: #333;
   font-family: "LongSans", sans-serif;
-  
-  /* 화면 전체 수직/수평 중앙 정렬 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   min-height: 100vh;
-  overflow-x: hidden;
 }
 
 @font-face {
@@ -33,20 +25,16 @@ body {
   font-family: "LongSans";
 }
 
-/* 메인 흰색 박스 컨테이너 */
 .wrapper.flow {
   width: 100%;
-
-
+  margin: 0 auto;
   max-width: 1000px;
-  min-height: 80vh; /* 화면 높이에 맞춰 중앙에 위치하도록 조정 */
+  min-height: 100vh;
   background: white;
   border-radius: 12px;
   padding: 40px;
-  
   display: flex;
   flex-direction: column;
-  justify-content: center; /* 내부 요소 수직 중앙 정렬 */
   align-items: center;
 }
 
@@ -54,8 +42,8 @@ body {
   color: #919191;
   font-size: 36px;
   font-weight: 800;
-  margin-bottom: 2rem;
-  margin-top: 0;
+  margin-bottom: 3.75rem;
+  margin-top: 1.25rem;
   font-family: "Helvetica", sans-serif;
   text-align: center;
   width: 100%;
@@ -66,7 +54,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 30rem;
+  height: 37.5rem;
+  margin-bottom: 1.875rem;
   overflow: hidden;
   position: relative;
 }
@@ -74,7 +63,7 @@ body {
 .dynamic-input {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 60%;
   transform: translate(-50%, -50%);
   width: 100%;
   font-family: "LongSans", sans-serif;
@@ -88,7 +77,8 @@ body {
   line-height: 1.4;
   letter-spacing: -0.01em;
   padding: 10px 0;
-
+  margin-top: 10px;
+  margin-bottom: 10px;
   font-variation-settings:
     "HGHT" 0,
     "MDLE" 50;
@@ -99,7 +89,8 @@ body {
   font-family: "Pretendard Variable", sans-serif;
   color: #999;
   font-size: 3.2rem;
-
+  padding-top: 50px;
+  padding-left: 15px;
 }
 
 .placeholder-text {
@@ -114,42 +105,42 @@ body {
 }
 
 /* =========================================================
-   [초록 영역] 우측 고정 컨트롤 패널 (슬라이더 바 중앙 정렬)
+   [수정됨] 수직 슬라이더 컨트롤 패널 (원본 두께 & 스타일 반영)
    ========================================================= */
 
-/* 우측 전체 고정 패널 */
+/* 화면 우측 고정 패널 */
 .control-panel {
   position: fixed;
   top: 50%;
   right: 50px;
-  transform: translateY(-50%); /* 패널 전체 수직 정중앙 고정 */
+  transform: translateY(-50%);
 
   width: 180px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 
-  gap: 10px 0;
+  gap: 15px 0;
   padding: 0;
 
   z-index: 100;
 }
 
-/* 개별 슬라이더 기둥 세로 박스 */
+/* 개별 슬라이더 기둥 (원본 비율 고려 세로 높이) */
 .slider-group {
   width: 70px;
-  height: 620px; /* 전체 슬라이더 기둥 높이 */
+  height: 700px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between; /* 숫자-바-라벨 균등 배치 */
+  justify-content: space-between;
 
   position: relative;
 }
 
-/* 상단 숫자 (0, 50) */
+/* 상단 숫자 (원본 수치: font-size: 14px, color: #666) */
 .slider-value {
   width: 100%;
   text-align: center;
@@ -161,27 +152,28 @@ body {
 
 }
 
-/* 슬라이더 바 구역 (이 영역 내부에서 슬라이더 바가 정중앙 정렬됨) */
+/* 슬라이더 영역 */
 .slider-wrapper {
   width: 20px;
-  flex: 1; /* 상단 숫자와 하단 라벨 사이의 남은 세로 공간을 정중앙 차지 */
+  height: 600px; /* 실제 세로 바 길이 */
 
   position: relative;
   display: flex;
-  align-items: center;     /* 수직 정중앙 정렬 */
-  justify-content: center; /* 수평 정중앙 정렬 */
-  margin: 10px 0;
+  align-items: center;
+  justify-content: center;
+
+  
 }
 
-/* 슬라이더 트랙 레인지 바 */
+/* 슬라이더 트랙 (원본 수치: height: 7px, background: #ddd, border-radius: 3px) */
 input[type="range"] {
 
   position: absolute;
   top: 50%;
   left: 50%;
 
-  width: 500px; /* 실질적인 세로 슬라이더 바 길이 */
-  height: 7px;  /* 원본 트랙 두께 */
+  width: 600px; /* slider-wrapper height와 동일한 수치 */
+  height: 7px;  /* 원하는 트랙 두께 */
 
   background: #ddd;
   border-radius: 3px;
@@ -189,12 +181,12 @@ input[type="range"] {
 
   accent-color: #000;
 
-  /* 정확한 정중앙 회전축 고정 */
+  /* 회전축 기준점을 딱 정중앙으로 고정 */
   transform: translate(-50%, -50%) rotate(-90deg);
   margin: 0;
 }
 
-/* 슬라이더 손잡이 (원본 18px 크기) */
+/* 원본 손잡이 (width: 18px, height: 18px) */
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -207,14 +199,14 @@ input[type="range"]::-webkit-slider-thumb {
   cursor: pointer;
 }
 
-
+/* 파이어폭스 왼/아래 채움 색상 (원본 수치 반영) */
 input[type="range"]::-moz-range-progress {
   background-color: #000;
   height: 7px;
   border-radius: 3px;
 }
 
-/* 하단 라벨 (Height, Middle) */
+/* 하단 라벨 (원본 수치: font-size: 16px, font-weight: 700, color: #555) */
 .slider-label {
   width: 100%;
   text-align: center;
@@ -227,7 +219,7 @@ input[type="range"]::-moz-range-progress {
   line-height: 20px;
 }
 
-/* 최하단 Variable 타이틀 */
+/* 맨 아래 타이틀 (원본 수치: font-size: 24px, font-weight: 800, color: #444) */
 .control-title {
   position: static;
   transform: none;
@@ -241,11 +233,11 @@ input[type="range"]::-moz-range-progress {
   font-family: "Helvetica", sans-serif;
   white-space: nowrap;
 
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
 /* =========================================================
-   사이드 메뉴 및 반응형/유휴 화면 (기존 동일)
+   사이드 메뉴 및 반응형/유휴 화면 (기존 원본 유지)
    ========================================================= */
 
 @media (max-width: 768px) {
@@ -255,7 +247,7 @@ input[type="range"]::-moz-range-progress {
 
   .title {
     font-size: 24px;
-    
+    margin-bottom: 3rem;
   }
 
   .preview-area {
@@ -297,7 +289,9 @@ input[type="range"]::-moz-range-progress {
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
-  transition: opacity 0.3s, transform 0.3s;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
   z-index: 998;
 }
 
@@ -341,7 +335,9 @@ input[type="range"]::-moz-range-progress {
   z-index: 9999;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease;
 }
 
 .idle-screen.active {
@@ -369,11 +365,31 @@ input[type="range"]::-moz-range-progress {
 }
 
 @keyframes fontWiggle {
-  0% { font-variation-settings: "HGHT" 10, "MDLE" 20; }
-  25% { font-variation-settings: "HGHT" 100, "MDLE" 85; }
-  50% { font-variation-settings: "HGHT" 40, "MDLE" 1; }
-  75% { font-variation-settings: "HGHT" 80, "MDLE" 60; }
-  100% { font-variation-settings: "HGHT" 1, "MDLE" 100; }
+  0% {
+    font-variation-settings:
+      "HGHT" 10,
+      "MDLE" 20;
+  }
+  25% {
+    font-variation-settings:
+      "HGHT" 100,
+      "MDLE" 85;
+  }
+  50% {
+    font-variation-settings:
+      "HGHT" 40,
+      "MDLE" 1;
+  }
+  75% {
+    font-variation-settings:
+      "HGHT" 80,
+      "MDLE" 60;
+  }
+  100% {
+    font-variation-settings:
+      "HGHT" 1,
+      "MDLE" 100;
+  }
 }
 
 .wiggle-text span {
@@ -398,7 +414,15 @@ input[type="range"]::-moz-range-progress {
 
 
 @media (max-width: 48rem) {
-  .idle-content { padding: 0 0px; }
-  .wiggle-text span { font-size: 8rem; }
-  .idle-content span:not(.wiggle-text span) { font-size: 1rem; }
+  .idle-content {
+    padding: 0 0px;
+  }
+
+  .wiggle-text span {
+    font-size: 8rem;
+  }
+
+  .idle-content span:not(.wiggle-text span) {
+    font-size: 1rem;
+  }
 }
