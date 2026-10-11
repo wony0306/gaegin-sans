@@ -130,7 +130,7 @@ body {
 /* 개별 슬라이더 기둥 (원본 비율 고려 세로 높이) */
 .slider-group {
   width: 70px;
-  height: 580px;
+  height: 700px;
 
   display: flex;
   flex-direction: column;
@@ -172,7 +172,7 @@ input[type="range"] {
   top: 50%;
   left: 50%;
 
-  width: 480px; /* slider-wrapper height와 동일한 수치 */
+  width: 600px; /* slider-wrapper height와 동일한 수치 */
   height: 7px;  /* 원하는 트랙 두께 */
 
   background: #ddd;
