@@ -8,22 +8,22 @@
 }
 
 /* =========================================================
-   1. body에서 두 영역을 Flex 레이아웃으로 종속 연결
+   1. body에서 메인 박스와 슬라이더 패널을 옆으로 나란히 종속 배치
    ========================================================= */
 body {
   margin: 0;
   background-color: #ffffff;
   color: #333;
   font-family: "LongSans", sans-serif;
-
   min-height: 100vh;
 
-
+  /* 수평 배치 및 세로 정중앙 정렬 */
   display: flex !important;
   flex-direction: row !important;
   align-items: center !important;
   justify-content: center !important;
 
+  gap: 80px; /* 메인 영역과 슬라이더 사이의 실제 거리 */
   padding: 0 60px;
   box-sizing: border-box;
 }
@@ -37,7 +37,7 @@ body {
   font-family: "LongSans";
 }
 
-/* 왼쪽 메인 입력 영역 (Flex 비율에 맞춰 영역 점유) */
+/* 왼쪽 메인 입력 영역 */
 .wrapper.flow {
   width: 100%;
   max-width: 900px;
@@ -50,7 +50,7 @@ body {
   flex-direction: column;
   align-items: center;
 
-  margin: 0 auto; /* 중앙 배치 유지 */
+  margin: 0; /* body flex 속성에 따라 자연스럽게 정렬 */
 }
 
 .title {
@@ -120,16 +120,15 @@ body {
 }
 
 /* =========================================================
-   2. 수직 슬라이더 패널 (position: fixed 제거 ➔ Flex 흐름 종속)
+   2. 수직 슬라이더 패널 (fixed 완전히 제거 ➔ flex 흐름 종속)
    ========================================================= */
-
 
 .control-panel {
   position: static !important;
   transform: none !important;
 
   width: 180px !important;
-  flex-shrink: 0 !important; /* 메인 박스가 아무리 커져도 자기 폭(180px) 유지 */
+  flex-shrink: 0 !important;
 
   display: flex;
   flex-wrap: wrap;
@@ -138,11 +137,10 @@ body {
 
   gap: 15px 0;
   padding: 0;
-
-  
+  margin: 0;
 }
 
-/* 개별 슬라이더 기둥 (요청하신 수치 유지) */
+/* 개별 슬라이더 기둥 (요청하신 700px 수치유지) */
 .slider-group {
   width: 70px;
   height: 700px;
@@ -155,7 +153,7 @@ body {
   position: relative;
 }
 
-/* 상단 숫자 (요청하신 수치 유지) */
+/* 상단 숫자 (0, 50) */
 .slider-value {
   width: 100%;
   text-align: center;
@@ -164,10 +162,9 @@ body {
   font-family: "Helvetica", sans-serif;
   height: 20px;
   line-height: 20px;
-
 }
 
-/* 슬라이더 영역 (요청하신 수치 유지) */
+/* 슬라이더 영역 */
 .slider-wrapper {
   width: 20px;
   height: 600px; /* 실제 세로 바 길이 */
@@ -176,19 +173,16 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-
-
 }
 
-/* 슬라이더 트랙 (요청하신 수치 유지) */
+/* 슬라이더 트랙 */
 input[type="range"] {
-  
   position: absolute;
   top: 50%;
   left: 50%;
 
-  width: 600px; /* slider-wrapper height와 동일 */
-  height: 7px;  /* 원하는 트랙 두께 */
+  width: 600px;
+  height: 7px;
 
   background: #ddd;
   border-radius: 3px;
@@ -196,12 +190,11 @@ input[type="range"] {
 
   accent-color: #000;
 
-
   transform: translate(-50%, -50%) rotate(-90deg);
   margin: 0;
 }
 
-/* 손잡이 (요청하신 수치 유지) */
+/* 손잡이 (18px) */
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -214,14 +207,13 @@ input[type="range"]::-webkit-slider-thumb {
   cursor: pointer;
 }
 
-
 input[type="range"]::-moz-range-progress {
   background-color: #000;
   height: 7px;
   border-radius: 3px;
 }
 
-/* 하단 라벨 (요청하신 수치 유지) */
+/* 하단 라벨 (Height, Middle) */
 .slider-label {
   width: 100%;
   text-align: center;
@@ -234,33 +226,30 @@ input[type="range"]::-moz-range-progress {
   line-height: 20px;
 }
 
-/* 맨 아래 타이틀 (요청하신 수치 유지) */
+/* 맨 아래 타이틀 (Variable) */
 .control-title {
-  position: relative !important;
-  top: auto !important;
-  right: auto !important;
+  position: static !important;
   transform: none !important;
 
-  width: 180px !important;
-  flex-shrink: 0 !important;
-  margin-left: auto; /* 핵심: 메인 박스의 패딩/마진 흐름 안에서 오른쪽 끝으로 자연스럽게 밀어냄 */
+  width: 100% !important;
+  text-align: center;
 
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
+  font-weight: 800;
+  font-size: 24px;
+  color: #444;
+  font-family: "Helvetica", sans-serif;
+  white-space: nowrap;
 
-  gap: 15px 0;
-  padding: 0;
+  margin-top: 25px;
 }
 
 /* =========================================================
-   3. 사이드 메뉴 및 반응형/유휴 화면 (기존 원본 유지)
+   3. 사이드 메뉴 및 반응형/유휴 화면
    ========================================================= */
 
 @media (max-width: 768px) {
   body {
-    flex-direction: column;
+    flex-direction: column !important;
     gap: 30px;
     padding: 20px;
   }
@@ -282,7 +271,6 @@ input[type="range"]::-moz-range-progress {
   .dynamic-input::placeholder {
     font-size: 2.3rem;
   }
-
 }
 
 .menu-btn {
@@ -431,8 +419,6 @@ input[type="range"]::-moz-range-progress {
 .wiggle-text span:nth-child(7) { animation-duration: 4.8s; animation-delay: 0.1s; }
 .wiggle-text span:nth-child(8) { animation-duration: 3s; animation-delay: 0.6s; }
 .wiggle-text span:nth-child(9) { animation-duration: 3.7s; animation-delay: 0.4s; }
-
-
 
 @media (max-width: 48rem) {
   .idle-content {
