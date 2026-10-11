@@ -7,13 +7,25 @@
   padding: 0;
 }
 
+/* =========================================================
+   1. body에서 두 영역을 Flex 레이아웃으로 종속 연결
+   ========================================================= */
 body {
   margin: 0;
   background-color: #ffffff;
   color: #333;
   font-family: "LongSans", sans-serif;
-  align-items: flex-start;
+  
   min-height: 100vh;
+
+  /* 두 영역을 나란히 배치하고 수직/수평 중앙 정렬 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* 메인 박스와 오른쪽 슬라이더 사이의 간격 (서로 공간 영향) */
+  gap: 60px;
+  padding: 0 40px;
 }
 
 @font-face {
@@ -25,9 +37,9 @@ body {
   font-family: "LongSans";
 }
 
+/* 왼쪽 메인 입력 영역 (Flex 비율에 맞춰 영역 점유) */
 .wrapper.flow {
-  width: 100%;
-  margin: 0 auto;
+  flex: 1;
   max-width: 1000px;
   min-height: 100vh;
   background: white;
@@ -36,6 +48,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0; /* 기존 margin: 0 auto 제거 */
 }
 
 .title {
@@ -105,17 +118,15 @@ body {
 }
 
 /* =========================================================
-   [수정됨] 수직 슬라이더 컨트롤 패널 (원본 두께 & 스타일 반영)
+   2. 수직 슬라이더 패널 (position: fixed 제거 ➔ Flex 흐름 종속)
    ========================================================= */
 
-/* 화면 우측 고정 패널 */
-.control-panel {
-  position: fixed;
-  top: 50%;
-  right: 50px;
-  transform: translateY(-50%);
 
+.control-panel {
+  /* position: fixed; 👈 독립 고정을 제거하여 body 간격에 종속시킴 */
   width: 180px;
+  flex-shrink: 0; /* 슬라이더 패널 폭 유지 */
+
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -127,7 +138,7 @@ body {
   z-index: 100;
 }
 
-/* 개별 슬라이더 기둥 (원본 비율 고려 세로 높이) */
+/* 개별 슬라이더 기둥 (요청하신 수치 유지) */
 .slider-group {
   width: 70px;
   height: 700px;
@@ -140,7 +151,7 @@ body {
   position: relative;
 }
 
-/* 상단 숫자 (원본 수치: font-size: 14px, color: #666) */
+/* 상단 숫자 (요청하신 수치 유지) */
 .slider-value {
   width: 100%;
   text-align: center;
@@ -152,7 +163,7 @@ body {
 
 }
 
-/* 슬라이더 영역 */
+/* 슬라이더 영역 (요청하신 수치 유지) */
 .slider-wrapper {
   width: 20px;
   height: 600px; /* 실제 세로 바 길이 */
@@ -162,17 +173,17 @@ body {
   align-items: center;
   justify-content: center;
 
-  
+
 }
 
-/* 슬라이더 트랙 (원본 수치: height: 7px, background: #ddd, border-radius: 3px) */
+/* 슬라이더 트랙 (요청하신 수치 유지) */
 input[type="range"] {
-
+  
   position: absolute;
   top: 50%;
   left: 50%;
 
-  width: 600px; /* slider-wrapper height와 동일한 수치 */
+  width: 600px; /* slider-wrapper height와 동일 */
   height: 7px;  /* 원하는 트랙 두께 */
 
   background: #ddd;
@@ -181,12 +192,12 @@ input[type="range"] {
 
   accent-color: #000;
 
-  /* 회전축 기준점을 딱 정중앙으로 고정 */
+
   transform: translate(-50%, -50%) rotate(-90deg);
   margin: 0;
 }
 
-/* 원본 손잡이 (width: 18px, height: 18px) */
+/* 손잡이 (요청하신 수치 유지) */
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -199,14 +210,14 @@ input[type="range"]::-webkit-slider-thumb {
   cursor: pointer;
 }
 
-/* 파이어폭스 왼/아래 채움 색상 (원본 수치 반영) */
+
 input[type="range"]::-moz-range-progress {
   background-color: #000;
   height: 7px;
   border-radius: 3px;
 }
 
-/* 하단 라벨 (원본 수치: font-size: 16px, font-weight: 700, color: #555) */
+/* 하단 라벨 (요청하신 수치 유지) */
 .slider-label {
   width: 100%;
   text-align: center;
@@ -219,7 +230,7 @@ input[type="range"]::-moz-range-progress {
   line-height: 20px;
 }
 
-/* 맨 아래 타이틀 (원본 수치: font-size: 24px, font-weight: 800, color: #444) */
+/* 맨 아래 타이틀 (요청하신 수치 유지) */
 .control-title {
   position: static;
   transform: none;
@@ -237,10 +248,16 @@ input[type="range"]::-moz-range-progress {
 }
 
 /* =========================================================
-   사이드 메뉴 및 반응형/유휴 화면 (기존 원본 유지)
+   3. 사이드 메뉴 및 반응형/유휴 화면 (기존 원본 유지)
    ========================================================= */
 
 @media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+  }
+
   .wrapper.flow {
     padding: 20px;
   }
@@ -259,9 +276,6 @@ input[type="range"]::-moz-range-progress {
     font-size: 2.3rem;
   }
 
-  .control-panel {
-    right: 15px;
-  }
 }
 
 .menu-btn {
