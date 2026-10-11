@@ -70,7 +70,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 180px);
+  height: calc(100vh - 80px);
   min-height: 500px;
   margin-bottom: 0;
   overflow: hidden;
