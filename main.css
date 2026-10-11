@@ -90,7 +90,7 @@ body {
   background: transparent;
   resize: none;
   overflow: hidden;
-  font-size: clamp(3rem, 8vw, 12rem);
+  font-size: clamp(3rem, 12vw, 12rem);
   line-height: 1.4;
   letter-spacing: -0.01em;
   padding: 10px 0;
