@@ -8,7 +8,7 @@
 }
 
 /* =========================================================
-   1. body에서 메인 박스와 슬라이더 패널을 옆으로 나란히 종속 배치
+   1. body 수평 Flex 설정 (오른쪽 공간 확보)
    ========================================================= */
 body {
   margin: 0;
@@ -17,15 +17,16 @@ body {
   font-family: "LongSans", sans-serif;
   min-height: 100vh;
 
-  /* 수평 배치 및 세로 정중앙 정렬 */
+  /* 좌우 수평 나란히 배치 */
   display: flex !important;
   flex-direction: row !important;
   align-items: center !important;
   justify-content: center !important;
 
-  gap: 80px; /* 메인 영역과 슬라이더 사이의 실제 거리 */
-  padding: 0 60px;
+  gap: 40px; /* 메인 박스와 우측 패널 사이 간격 */
+  padding: 0 40px;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 @font-face {
@@ -37,9 +38,12 @@ body {
   font-family: "LongSans";
 }
 
-/* 왼쪽 메인 입력 영역 */
+/* =========================================================
+   2. 메인 입력 영역 (오른쪽 패널 자리를 위해 너비 양보)
+   ========================================================= */
 .wrapper.flow {
-  width: 100%;
+  /* 오른쪽 180px 슬라이더와 gap 40px을 뺀 나머지 공간만 차지하도록 고정 */
+  width: calc(100% - 240px) !important;
   max-width: 900px;
   min-height: auto;
   background: white;
@@ -50,7 +54,8 @@ body {
   flex-direction: column;
   align-items: center;
 
-  margin: 0; /* body flex 속성에 따라 자연스럽게 정렬 */
+  margin: 0 !important; /* margin: 0 auto 해제하여 왼쪽/중앙 자리를 유지 */
+  flex-shrink: 1;
 }
 
 .title {
@@ -120,15 +125,14 @@ body {
 }
 
 /* =========================================================
-   2. 수직 슬라이더 패널 (fixed 완전히 제거 ➔ flex 흐름 종속)
+   3. 수직 슬라이더 패널 (오른쪽에 붙도록 너비 고정)
    ========================================================= */
-
 .control-panel {
   position: static !important;
   transform: none !important;
 
   width: 180px !important;
-  flex-shrink: 0 !important;
+  flex-shrink: 0 !important; /* 절대로 줄어들거나 아래로 밀리지 않게 고정 */
 
   display: flex;
   flex-wrap: wrap;
@@ -140,7 +144,7 @@ body {
   margin: 0;
 }
 
-/* 개별 슬라이더 기둥 (요청하신 700px 수치유지) */
+/* 개별 슬라이더 기둥 (700px 유지) */
 .slider-group {
   width: 70px;
   height: 700px;
@@ -164,10 +168,10 @@ body {
   line-height: 20px;
 }
 
-/* 슬라이더 영역 */
+/* 슬라이더 바 영역 */
 .slider-wrapper {
   width: 20px;
-  height: 600px; /* 실제 세로 바 길이 */
+  height: 600px;
 
   position: relative;
   display: flex;
@@ -175,7 +179,7 @@ body {
   justify-content: center;
 }
 
-/* 슬라이더 트랙 */
+/* 슬라이더 레인지 트랙 */
 input[type="range"] {
   position: absolute;
   top: 50%;
@@ -244,9 +248,8 @@ input[type="range"]::-moz-range-progress {
 }
 
 /* =========================================================
-   3. 사이드 메뉴 및 반응형/유휴 화면
+   4. 기타 반응형 / 메뉴
    ========================================================= */
-
 @media (max-width: 768px) {
   body {
     flex-direction: column !important;
@@ -255,6 +258,7 @@ input[type="range"]::-moz-range-progress {
   }
 
   .wrapper.flow {
+    width: 100% !important;
     padding: 20px;
   }
 
