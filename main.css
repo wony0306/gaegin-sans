@@ -131,7 +131,7 @@ body {
   bottom: auto !important;
   transform: none !important;
 
-  width: 150px !important;
+  width: 180px !important;
   height: auto !important;
   flex-shrink: 0 !important;
 
@@ -140,7 +140,7 @@ body {
   justify-content: center;
   align-items: start;
 
-  column-gap: 10px;
+  column-gap: 18px;
   row-gap: 0;
   padding: 0;
   margin: 0;
@@ -167,7 +167,7 @@ body {
   color: #666;
   font-family: "Helvetica", sans-serif;
   height: 20px;
-  line-height: 20px;
+  line-height: 5px;
 }
 
 /* 슬라이더 바 영역 */
@@ -230,7 +230,7 @@ input[type="range"]::-moz-range-progress {
   font-family: "Helvetica", sans-serif;
   white-space: nowrap;
   height: 20px;
-  line-height: 20px;
+  line-height: 40px;
 }
 
 /* 맨 아래 타이틀 (Variable) */
@@ -242,13 +242,13 @@ input[type="range"]::-moz-range-progress {
   width: 100% !important;
   text-align: center;
 
-  font-weight: 800;
-  font-size: 24px;
+  font-weight: 700;
+  font-size: 22px;
   color: #444;
   font-family: "Helvetica", sans-serif;
   white-space: nowrap;
 
-  margin-top: 25px;
+  margin-top: 50px;
 }
 
 /* =========================================================
