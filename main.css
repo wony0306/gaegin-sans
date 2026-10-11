@@ -115,13 +115,13 @@ body {
   right: 50px;
   transform: translateY(-50%);
 
-  width: 160px;
+  width: 180px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
 
-  gap: 15px 0;
+  gap: 10px 0;
   padding: 0;
 
   z-index: 100;
@@ -129,8 +129,8 @@ body {
 
 /* 개별 슬라이더 기둥 (원본 비율 고려 세로 높이) */
 .slider-group {
-  width: 60px;
-  height: 520px;
+  width: 70px;
+  height: 600px;
 
   display: flex;
   flex-direction: column;
@@ -147,23 +147,25 @@ body {
   font-size: 14px;
   color: #666;
   font-family: "Helvetica", sans-serif;
+  margin-bottom: 5px;
 }
 
 /* 슬라이더 영역 */
 .slider-wrapper {
-  width: 18px; /* 손잡이 두께 18px과 맞춤 */
-  height: 440px;
+  width: 20px; /* 손잡이 두께 18px과 맞춤 */
+  height: 500px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   position: relative;
+  margin: 10px 0;
 }
 
 /* 슬라이더 트랙 (원본 수치: height: 7px, background: #ddd, border-radius: 3px) */
 input[type="range"] {
-  width: 440px;
+  width: 500px;
   height: 7px;
 
   background: #ddd;
@@ -205,6 +207,7 @@ input[type="range"]::-moz-range-progress {
   color: #555;
   font-family: "Helvetica", sans-serif;
   white-space: nowrap;
+  margin-top: 5px;
 }
 
 /* 맨 아래 타이틀 (원본 수치: font-size: 24px, font-weight: 800, color: #444) */
