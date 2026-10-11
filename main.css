@@ -189,7 +189,7 @@ input[type="range"] {
   left: 50%;
 
   width: 680px; /* 👈 slider-wrapper height와 동일한 680px 지정 */
-  height: 7px;
+  height: 10px;
 
   background: #ddd;
   border-radius: 3px;
@@ -216,7 +216,7 @@ input[type="range"]::-webkit-slider-thumb {
 
 input[type="range"]::-moz-range-progress {
   background-color: #000;
-  height: 7px;
+  height: 10px;
   border-radius: 3px;
 }
 
