@@ -125,22 +125,26 @@ body {
    ========================================================= */
 .control-panel {
   position: fixed !important;
-  top: 15% !important; /* 위로 살짝 올려 하단 여백 공간 확보 */
-  right: 5.5% !important;
+
+  top: auto !important;
+  bottom: 5vh !important;
+  right: 2.3vw !important;
   left: auto !important;
-  bottom: auto !important;
+
   transform: none !important;
 
-  width: 180px !important;
+  width: 160px !important;
   height: auto !important;
-  flex-shrink: 0 !important;
+  max-height: 92vh;
 
   display: grid !important;
   grid-template-columns: 1fr 1fr;
-  justify-content: center;
-  align-items: start;
+  grid-template-rows: auto auto;
 
-  column-gap: 10px;
+  justify-content: center;
+  align-items: stretch;
+
+  column-gap: 8px;
   row-gap: 0;
   padding: 0;
   margin: 0;
@@ -148,8 +152,8 @@ body {
 
 /* 개별 슬라이더 기둥 (700px 유지) */
 .slider-group {
-  width: 70px;
-  height: 740px; /* 전체 기둥 세로 공간 확장 */
+   width: 100%;
+  height: clamp(280px, 72vh, 1000px);
 
   display: flex;
   flex-direction: column;
@@ -157,6 +161,7 @@ body {
   justify-content: space-between;
 
   position: relative;
+  min-height: 0;
 }
 
 /* 상단 숫자 (0, 50) */
@@ -172,23 +177,25 @@ body {
 
 /* 슬라이더 바 영역 */
 .slider-wrapper {
-  width: 20px;
-  height: 680px; /* 👈 540px에서 680px로 시원하게 연장 */
+   width: 20px;
+  height: 100%;
 
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+
+  flex: 1;
+  min-height: 0;
 }
 
 /* 슬라이더 레인지 트랙 */
 input[type="range"] {
-  position: absolute;
+   position: absolute;
   top: 50%;
   left: 50%;
 
-  width: 680px; /* 👈 slider-wrapper height와 동일한 680px 지정 */
+  width: clamp(280px, 72vh, 1000px);
   height: 10px;
 
   background: #ddd;
@@ -197,10 +204,11 @@ input[type="range"] {
   accent-color: #000;
 
   transform: translate(-50%, -50%) rotate(-90deg);
+  transform-origin: center;
+
   margin: 0;
   padding: 0;
 }
-
 /* 손잡이 (18px) */
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -240,15 +248,16 @@ input[type="range"]::-moz-range-progress {
 
   grid-column: 1 / -1;
   width: 100% !important;
-  text-align: center;
 
+  text-align: center;
   font-weight: 700;
-  font-size: 22px;
+  font-size: 16px;
+  line-height: 1.2;
   color: #444;
-  font-family: "Helvetica", sans-serif;
+  font-family: Helvetica, sans-serif;
   white-space: nowrap;
 
-  margin-top: 65px;
+  margin-top: 12px;
 }
 
 /* =========================================================
