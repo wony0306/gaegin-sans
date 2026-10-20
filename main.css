@@ -235,7 +235,7 @@ input[type="range"]::-moz-range-progress {
   color: #555;
   font-family: "Helvetica", sans-serif;
   white-space: nowrap;
-  height: 30px;
+  height: 50px;
   line-height: 30px;
   flex-shrink: 0;
 }
