@@ -125,18 +125,20 @@ body {
    ========================================================= */
 .control-panel {
   position: fixed !important;
-  top: 15% !important; /* 위로 살짝 올려 하단 여백 공간 확보 */
+
+  top: 15vh !important; /* 위로 살짝 올려 하단 여백 공간 확보 */
   right: 5.5% !important;
   left: auto !important;
   bottom: auto !important;
   transform: none !important;
 
   width: 180px !important;
-  height: auto !important;
-  flex-shrink: 0 !important;
+  height: 75vh !important;
 
   display: grid !important;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: minmax(0,1fr);
+
   justify-content: center;
   align-items: start;
 
@@ -149,7 +151,8 @@ body {
 /* 개별 슬라이더 기둥 (700px 유지) */
 .slider-group {
   width: 70px;
-  height: 740px; /* 전체 기둥 세로 공간 확장 */
+  height: 100%; /* 전체 기둥 세로 공간 확장 */
+  min-height: 0;
 
   display: flex;
   flex-direction: column;
@@ -173,13 +176,16 @@ body {
 /* 슬라이더 바 영역 */
 .slider-wrapper {
   width: 20px;
-  height: 680px; /* 👈 540px에서 680px로 시원하게 연장 */
+  height: auto; /* 👈 540px에서 680px로 시원하게 연장 */
 
+  flex: 1;
+  min-height: 0;
   position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  
 }
 
 /* 슬라이더 레인지 트랙 */
@@ -188,7 +194,7 @@ input[type="range"] {
   top: 50%;
   left: 50%;
 
-  width: 680px; /* 👈 slider-wrapper height와 동일한 680px 지정 */
+  width: 100%; /* 👈 slider-wrapper height와 동일한 680px 지정 */
   height: 10px;
 
   background: #ddd;
@@ -240,6 +246,7 @@ input[type="range"]::-moz-range-progress {
 
   grid-column: 1 / -1;
   width: 100% !important;
+
   text-align: center;
 
   font-weight: 700;
@@ -248,7 +255,7 @@ input[type="range"]::-moz-range-progress {
   font-family: "Helvetica", sans-serif;
   white-space: nowrap;
 
-  margin-top: 65px;
+  margin-top: 15px;
 }
 
 /* =========================================================
