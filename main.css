@@ -137,10 +137,10 @@ body {
 
   display: grid !important;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: minmax(0,1fr);
+  grid-template-rows: minmax(0,1fr)auto;
 
   justify-content: center;
-  align-items: start;
+  align-items: stretch;
 
   column-gap: 10px;
   row-gap: 0;
@@ -194,7 +194,7 @@ input[type="range"] {
   top: 50%;
   left: 50%;
 
-  width: 100%; /* 👈 slider-wrapper height와 동일한 680px 지정 */
+  width: calc(70vh- 100px); /* 👈 slider-wrapper height와 동일한 680px 지정 */
   height: 10px;
 
   background: #ddd;
@@ -235,8 +235,9 @@ input[type="range"]::-moz-range-progress {
   color: #555;
   font-family: "Helvetica", sans-serif;
   white-space: nowrap;
-  height: 20px;
-  line-height: 40px;
+  height: 30px;
+  line-height: 30px;
+  flex-shrink: 0;
 }
 
 /* 맨 아래 타이틀 (Variable) */
@@ -255,7 +256,7 @@ input[type="range"]::-moz-range-progress {
   font-family: "Helvetica", sans-serif;
   white-space: nowrap;
 
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 /* =========================================================
