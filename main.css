@@ -124,10 +124,10 @@ body {
    3. 수직 슬라이더 패널 (오른쪽에 붙도록 너비 고정)
    ========================================================= */
 .control-panel {
-  position: fixed !important;
+   position: fixed !important;
 
   top: auto !important;
-  bottom: 5vh !important;
+  bottom: 3vh !important;
   right: 2.3vw !important;
   left: auto !important;
 
@@ -135,44 +135,54 @@ body {
 
   width: 160px !important;
   height: auto !important;
-  max-height: 92vh;
+
 
   display: grid !important;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
+  grid-template-columns: 1fr 1fr !important;
+  grid-template-rows: auto auto !important;
 
-  justify-content: center;
-  align-items: stretch;
+  align-items: stretch !important;
+  column-gap: 8px !important;
+  row-gap: 0 !important;
 
-  column-gap: 8px;
-  row-gap: 0;
-  padding: 0;
-  margin: 0;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 /* 개별 슬라이더 기둥 (700px 유지) */
 .slider-group {
-   width: 100%;
-  height: clamp(280px, 72vh, 1000px);
+  width: 100% !important;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  /* 화면 높이에 따라 유동적으로 변경 */
+  height: 75vh !important;
+  max-height: 1200px !important;
+  min-height: 250px !important;
 
-  position: relative;
-  min-height: 0;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+
+  position: relative !important;
 }
 
 /* 상단 숫자 (0, 50) */
 .slider-value {
-  width: 100%;
-  text-align: center;
-  font-size: 14px;
-  color: #666;
-  font-family: "Helvetica", sans-serif;
-  height: 20px;
-  line-height: 5px;
+ flex-shrink: 0 !important;
+}
+
+/* 슬라이더 영역 */
+.slider-wrapper {
+  width: 20px !important;
+  height: auto !important;
+
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 /* 슬라이더 바 영역 */
@@ -191,24 +201,23 @@ body {
 
 /* 슬라이더 레인지 트랙 */
 input[type="range"] {
-   position: absolute;
-  top: 50%;
-  left: 50%;
+  width: 75vh !important;
+  max-width: 1200px !important;
+  min-width: 250px !important;
 
-  width: clamp(280px, 72vh, 1000px);
-  height: 10px;
+  height: 10px !important;
 
-  background: #ddd;
-  border-radius: 3px;
-  outline: none;
-  accent-color: #000;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
 
-  transform: translate(-50%, -50%) rotate(-90deg);
-  transform-origin: center;
+  transform: translate(-50%, -50%) rotate(-90deg) !important;
+  transform-origin: center !important;
 
-  margin: 0;
-  padding: 0;
+  margin: 0 !important;
+  padding: 0 !important;
 }
+
 /* 손잡이 (18px) */
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -230,16 +239,20 @@ input[type="range"]::-moz-range-progress {
 
 /* 하단 라벨 (Height, Middle) */
 .slider-label {
-  width: 100%;
-  text-align: center;
-  font-size: 15px;
-  font-weight: 700;
-  color: #555;
-  font-family: "Helvetica", sans-serif;
-  white-space: nowrap;
-  height: 20px;
-  line-height: 40px;
+  flex-shrink: 0 !important;
 }
+
+/* Variable */
+.control-title {
+  grid-column: 1 / -1 !important;
+
+  position: static !important;
+  transform: none !important;
+
+  width: 100% !important;
+  margin-top: 12px !important;
+}
+
 
 /* 맨 아래 타이틀 (Variable) */
 .control-title {
